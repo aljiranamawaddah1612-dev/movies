@@ -12,7 +12,10 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        //
+         return view('movies.index', [
+            'title' => 'Movies',
+            'movies' => Movies::all(),
+            ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        //
+         return view('movies.create', ['title' => 'Create Movies']);
     }
 
     /**
