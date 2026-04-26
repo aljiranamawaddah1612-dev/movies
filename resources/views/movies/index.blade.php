@@ -17,6 +17,7 @@
                 {{ $movies->release_year }} -
                 {{ $movies->duration }} -
                 {{ $movies->rating }}
+                <a class="btn btn-warning btn-sm" href="{{ route('movies.edit', $movies) }}" role="button">Edit</a>
             </li>
         @endforeach
     </ul>
