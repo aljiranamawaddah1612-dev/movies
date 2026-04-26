@@ -49,9 +49,6 @@
         </div>
 
         <a class="btn btn-warning " href="{{ route('movies.index') }}" role="button">Cancel</a>
-        <ul class="list-group">
-
-        </ul>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

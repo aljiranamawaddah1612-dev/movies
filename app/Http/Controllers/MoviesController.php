@@ -14,7 +14,8 @@ class MoviesController extends Controller
     {
          return view('movies.index', [
             'title' => 'Movies',
-            'movies' => Movies::all(),
+            'movies' => Movies::latest()->get(),
+            //'movies' => Movies::orderBy('judul','asc')->get(),
             ]);
     }
 
@@ -120,6 +121,7 @@ class MoviesController extends Controller
      */
     public function destroy(movies $movies)
     {
-        //
+        $movies->delete($movies);
+    return to_route('movies.index')->withSuccess('Data berhasil di hapus');
     }
 }
