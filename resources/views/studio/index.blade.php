@@ -41,8 +41,6 @@
         @endforeach
     </ul>
 
-    </div style="font-size: 12px;">
     {{ $studios->links() }}
-    </div>
 
 </x-app>

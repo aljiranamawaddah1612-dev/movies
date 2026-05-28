@@ -22,7 +22,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" href="{{ route('movies.index') }}">Movies</a>
                     <a class="nav-link active" href="{{ route('studio.index') }}">Studio</a>
-                    <a class="nav-link active" href="{{ route('studio.index') }}">Seat</a>
+                    <a class="nav-link active" href="{{ route('seat.index') }}">Seat</a>
                 </div>
             </div>
         </div>

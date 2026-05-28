@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\SeatController;
 use App\Http\Controllers\StudioController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,6 @@ Route::put('/movies/{movies}', [MoviesController::class, 'update'])->name('movie
 Route::delete('/movies/{movies}', [MoviesController::class, 'destroy'])->name('movies.destroy');
 
 Route::resource('studio', StudioController::class);
-Route::resource('seat', StudioController::class);
+Route::resource('seat', SeatController::class);
 
 

@@ -16,7 +16,7 @@ class StudioController extends Controller
         $studios = Studio::latest();
         $keyword = request('keyword');
         if ($keyword) {
-           $studios->where('name', 'like', '%'. $keyword . '%'); 
+           $studios->where('type', 'like', '%'. $keyword . '%'); 
         }
 
          return view('studio.index', [
