@@ -86,7 +86,11 @@ class SeatController extends Controller
      */
     public function edit(Seat $seat)
     {
-       //
+       return view('seat.edit', [
+            'title' => ' Edit Seat',
+            'seat' => $seat,
+            'studios' => Studio::all(),
+            ]);
     }
 
     /**
@@ -94,7 +98,28 @@ class SeatController extends Controller
      */
     public function update(Request $request, Seat $seat)
     {
-         //
+         $validated = $request->validate([
+        'seat_number' => 'required|max:255',
+        'row' => 'required|max:255',
+        'type' => 'required|max:255',
+        'status' => 'required|max:255',
+        'price' => 'required|integer',
+        'studio_id' => 'required',
+    ], [
+        'seat_number.required' => 'Seat Number tidak boleh kosong',
+        'seat_number.max' => 'Seat Number tidak boleh lebih dari :max karakter',
+        'row.required' => 'Row tidak boleh kosong',
+        'row.max' => 'Row tidak boleh lebih dari :max karakter',
+        'type.required' => 'Type tidak boleh kosong',
+        'type.max' => 'Type tidak boleh lebih dari :max karakter',
+        'status.required' => 'Status tidak boleh kosong',
+        'status.max' => 'Status tidak boleh lebih dari :max karakter',
+        'price.required' => 'Price tidak boleh kosong',
+        'studio_id.required' => 'Studio wajib dipilih',
+    ]);
+
+    Seat::create($validated);
+    return to_route('seat.index')->withSuccess('Data berhasil ditambahkan');
     }
     
     /**

@@ -49,17 +49,13 @@
         <div class="mb-3">
             <label for="studio_id" class="form-label">Studio</label>
             <select name="studio_id" id="studio_id" class="form-select @error('studio_id') is-invalid @enderror">
-
                 <option value="">Pilih Studio</option>
-
                 @foreach ($studios as $studio)
                     <option value="{{ $studio->id }}">
                         {{ $studio->name }}
                     </option>
                 @endforeach
-
             </select>
-
             @error('studio_id')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
