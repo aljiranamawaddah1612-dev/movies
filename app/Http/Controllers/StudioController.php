@@ -50,7 +50,7 @@ class StudioController extends Controller
         'capacity.required' =>'Type tidak boleh kosong',
     ]);
 
-     Studio::create($validated);
+    Studio::create($validated);
     return to_route('studio.index')->withSuccess('Data berhasil di tambahkan');
     }
 

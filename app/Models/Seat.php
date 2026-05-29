@@ -17,4 +17,5 @@ class Seat extends Model
     {
         return $this->belongsTo(Studio::class);
     }
+    protected $fillable = [ 'seat_number', 'row', 'type', 'status', 'price', 'studio_id', ];
 }
