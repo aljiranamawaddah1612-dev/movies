@@ -18,3 +18,5 @@ Route::resource('studio', StudioController::class);
 Route::resource('seat', SeatController::class);
 
 
+
+

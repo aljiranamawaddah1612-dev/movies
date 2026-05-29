@@ -127,6 +127,7 @@ class SeatController extends Controller
     */
     public function destroy(Seat $seat)
     {
-       //
+        $seat->delete($seat);
+        return to_route('seat.index')->withSuccess('Data berhasil di hapus');
     }
 }
