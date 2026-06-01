@@ -78,7 +78,10 @@ class SeatController extends Controller
      */
     public function show(Seat $seat)
     {
-        //
+       return view('seat.show', [
+            'title' => ' Detail Seat '. $seat->seat_number ,
+            'seat' =>   $seat->load('studio'),
+            ]);
     }
 
     /**
@@ -118,8 +121,8 @@ class SeatController extends Controller
         'studio_id.required' => 'Studio wajib dipilih',
     ]);
 
-    Seat::create($validated);
-    return to_route('seat.index')->withSuccess('Data berhasil ditambahkan');
+    $seat->update($validated);
+    return to_route('seat.index')->withSuccess('Data berhasil diubah');
     }
     
     /**
@@ -127,7 +130,7 @@ class SeatController extends Controller
     */
     public function destroy(Seat $seat)
     {
-        $seat->delete($seat);
+        $seat->delete();
         return to_route('seat.index')->withSuccess('Data berhasil di hapus');
     }
 }

@@ -42,6 +42,7 @@
                 {{ $seat->type }} -
                 {{ $seat->status }} -
                 Rp. {{ number_format($seat->price) }} - {{ $seat->studio->name }}
+                <a class="btn btn-info btn-sm" href="{{ route('seat.show', $seat) }}" role="button">Detail</a>
                 <a class="btn btn-warning btn-sm" href="{{ route('seat.edit', $seat) }}" role="button">Edit</a>
                 <form action="{{ route('seat.destroy', $seat) }}" method="POST" class="d-inline">
                     @method('DELETE')

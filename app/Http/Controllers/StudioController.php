@@ -59,9 +59,10 @@ class StudioController extends Controller
      */
     public function show(Studio $studio)
     {
+        
         return view('studio.show', [
-            'title' => 'Detail Studio'. $studio->name,
-            'studio' =>   $studio,
+            'title' => ' Detail Studio '. $studio->name,
+            'studio' =>   $studio->load('seats'),
             ]);
     }
 
@@ -71,7 +72,7 @@ class StudioController extends Controller
     public function edit(Studio $studio)
     {
          return view('studio.edit', [
-            'title' => ' Edit Studio',
+            'title' => ' Edit Studio ',
             'studio' => $studio,
             ]);
     }
@@ -101,7 +102,7 @@ class StudioController extends Controller
     */
     public function destroy(Studio $studio)
     {
-        $studio->delete($studio);
+        $studio->delete();
         return to_route('studio.index')->withSuccess('Data berhasil di hapus');
     }
 }
