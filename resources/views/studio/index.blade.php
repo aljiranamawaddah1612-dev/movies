@@ -28,7 +28,8 @@
         @foreach ($studios as $studio)
             <li class="list-group-item" style="font-size: 14px;">{{ $studios->firstItem() + $loop->index }}.
                 {{ $studio->name }} -
-                {{ $studio->type }} - {{ $studio->capacity }}
+                {{ $studio->type }} -
+                {{ $studio->capacity }}
                 <a class="btn btn-info btn-sm" href="{{ route('studio.show', $studio) }}" role="button">Detail</a>
                 <a class="btn btn-warning btn-sm" href="{{ route('studio.edit', $studio) }}" role="button">Edit</a>
                 <form action="{{ route('studio.destroy', $studio) }}" method="POST" class="d-inline">

@@ -37,7 +37,7 @@ class MoviesController extends Controller
         'genre' => 'required|max:255',
         'release_year' => 'required|integer|digits:4',
         'duration' => 'required|min:1',
-        'rating' => 'required|numeric|min:0|max:10',
+        'rating' => 'required|numeric|min:0|max:100',
     ], [
         'judul.required' =>'Judul tidak boleh kosong',
         'judul.max' =>'Judul tidak boleh lebih dari :max karakter',
@@ -55,7 +55,7 @@ class MoviesController extends Controller
         'rating.required' =>'Rating tidak boleh kosong',
         'rating.numeric' =>'Rating harus berupa angka',
         'rating.min' =>'Rating minimal 0',
-        'rating.max' =>'Rating maksimal 10',
+        'rating.max' =>'Rating maksimal 100',
     ]);
 
      movies::create($validated);
@@ -91,7 +91,7 @@ class MoviesController extends Controller
         'genre' => 'required|max:255',
         'release_year' => 'required|integer|digits:4',
         'duration' => 'required|min:1',
-        'rating' => 'required|numeric|min:0|max:10',
+        'rating' => 'required|numeric|min:0|max:100',
     ], [
         'judul.required' =>'Judul tidak boleh kosong',
         'judul.max' =>'Judul tidak boleh lebih dari :max karakter',

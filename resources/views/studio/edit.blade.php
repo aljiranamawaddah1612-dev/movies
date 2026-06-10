@@ -18,7 +18,7 @@
         <div class="mb-3">
             <label for="type" class="form-label">Type</label>
             <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type"
-                value="{{ old('type') }}">
+                value="{{ old('type', $studio->type) }}">
             @error('type')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -26,7 +26,7 @@
         <div class="mb-3">
             <label for="capacity" class="form-label">Capacity</label>
             <input type="number" class="form-control @error('capacity') is-invalid @enderror" id="capacity"
-                name="capacity" value="{{ old('capacity') }}">
+                name="capacity" value="{{ old('capacity', $studio->capacity) }}">
             @error('capacity')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror

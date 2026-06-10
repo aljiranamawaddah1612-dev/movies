@@ -32,7 +32,7 @@ class SeatController extends Controller
         return view('seat.index', [
             'title' => 'Seat',
             'studios' => Studio::latest()->get(),
-            'seats' =>  $seats->paginate(5)->withQueryString(),
+            'seats' =>  $seats->paginate(10)->withQueryString(),
             ]);
     }
 
