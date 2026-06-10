@@ -9,6 +9,7 @@
     @endsession
 
     <a class="btn btn-primary mb-3" href="{{ route('movies.create') }}" role="button">Create</a>
+    <a class="btn btn-primary mb-3" href="{{ route('movies.trash') }}" role="button">Trash</a>
     <ul class="list-group">
         @foreach ($movies as $movies)
             <li class="list-group-item" style="font-size: 14px;">{{ $loop->iteration }}.
@@ -16,7 +17,8 @@
                 {{ $movies->genre }} -
                 {{ $movies->release_year }} -
                 {{ $movies->duration }} -
-                {{ $movies->rating }}
+                {{ $movies->rating }} -
+                {{ $movies->synopsis ?? '-' }}
                 <a class="btn btn-warning btn-sm" href="{{ route('movies.edit', $movies) }}" role="button">Edit</a>
                 <form action="{{ route('movies.destroy', $movies) }}" method="POST" class="d-inline">
                     @method('DELETE')
