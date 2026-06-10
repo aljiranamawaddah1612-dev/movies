@@ -46,6 +46,13 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="synopsis" class="form-label">Synopsis</label>
+            <textarea class="form-control @error('synopsis') is-invalid @enderror" id="synopsis" name="synopsis">{{ old('synopsis') }}</textarea>
+            @error('synopsis')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
         <a class="btn btn-warning " href="{{ route('movies.index') }}" role="button">Cancel</a>
         <ul class="list-group">

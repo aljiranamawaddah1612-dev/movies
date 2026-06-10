@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\movies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MoviesController extends Controller
 {
@@ -38,6 +39,7 @@ class MoviesController extends Controller
         'release_year' => 'required|integer|digits:4',
         'duration' => 'required|min:1',
         'rating' => 'required|numeric|min:0|max:100',
+        'synopsis' => 'nullable|max:255',
     ], [
         'judul.required' =>'Judul tidak boleh kosong',
         'judul.max' =>'Judul tidak boleh lebih dari :max karakter',
@@ -56,10 +58,18 @@ class MoviesController extends Controller
         'rating.numeric' =>'Rating harus berupa angka',
         'rating.min' =>'Rating minimal 0',
         'rating.max' =>'Rating maksimal 100',
+        'synopsis.max' =>'Sinopsis tidak boleh lebih dari :max karakter',
     ]);
+        DB::beginTransaction(); 
+        try {
+            movies::create($validated);
+            DB::commit(); 
+            return to_route('movies.index')->withSuccess('Data berhasil di tambahkan');
 
-     movies::create($validated);
-    return to_route('movies.index')->withSuccess('Data berhasil di tambahkan');
+        } catch (\Exception $e) {
+            DB::rollBack(); 
+            return redirect()->back()->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
+        }
     }
 
     /**
