@@ -152,6 +152,13 @@ class MoviesController extends Controller
             'movies' => Movies::onlyTrashed()->latest()->get(),
         ]);
     }
+
+    public function restore($id)
+    {
+        $movies = Movies::onlyTrashed()->findOrFail($id);
+        $movies->restore();
+        return to_route('movies.trash')->withSuccess('Data berhasil dikembalikan');
+    }
         
 }
 
