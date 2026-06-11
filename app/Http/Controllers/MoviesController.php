@@ -159,6 +159,13 @@ class MoviesController extends Controller
         $movies->restore();
         return to_route('movies.trash')->withSuccess('Data berhasil dikembalikan');
     }
+
+    public function forceDelete($id)
+    {
+        $movies = Movies::onlyTrashed()->findOrFail($id);
+        $movies->forceDelete();
+        return to_route('movies.trash')->withSuccess('Data berhasil dihapus permanen');
+    }
         
 }
 
