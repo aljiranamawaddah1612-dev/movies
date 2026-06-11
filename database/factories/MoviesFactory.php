@@ -23,6 +23,7 @@ class MoviesFactory extends Factory
             'release_year' => fake()->year(),
             'duration' => rand(60, 180),
             'rating' => rand(1, 10),
+            'synopsis' => fake()->sentence(),
         ];
     }
 }

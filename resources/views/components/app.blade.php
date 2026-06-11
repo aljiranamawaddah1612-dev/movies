@@ -23,6 +23,7 @@
                     <a class="nav-link active" href="{{ route('movies.index') }}">Movies</a>
                     <a class="nav-link active" href="{{ route('studio.index') }}">Studio</a>
                     <a class="nav-link active" href="{{ route('seat.index') }}">Seat</a>
+                    <a class="nav-link active" href="{{ route('movies.trash') }}">Trash</a>
                 </div>
             </div>
         </div>

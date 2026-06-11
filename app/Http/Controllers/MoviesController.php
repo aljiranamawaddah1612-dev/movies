@@ -133,6 +133,7 @@ class MoviesController extends Controller
         DB::rollBack();
         return redirect()->back()->with('error', 'Gagal mengubah data: ' . $e->getMessage());
     }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -140,6 +141,17 @@ class MoviesController extends Controller
     public function destroy(movies $movies)
     {
         $movies->delete($movies);
-    return to_route('movies.index')->withSuccess('Data berhasil di hapus');
+        return to_route('movies.index')->withSuccess('Data berhasil di hapus');
     }
+
+    //soft deletes
+    public function trash()
+    {
+         return view('movies.trash', [
+            'title' => 'Trash Movies',
+            'movies' => Movies::onlyTrashed()->latest()->get(),
+        ]);
+    }
+        
 }
+

@@ -14,7 +14,10 @@ Route::get('/movies/{movies}/edit', [MoviesController::class, 'edit'])->name('mo
 Route::put('/movies/{movies}', [MoviesController::class, 'update'])->name('movies.update');
 Route::delete('/movies/{movies}', [MoviesController::class, 'destroy'])->name('movies.destroy');
 
+//soft deletes
 Route::get('/movies/trash', [MoviesController::class, 'trash'])->name('movies.trash');
+Route::post('/movies/{id}/restore', [MoviesController::class, 'restore'])->name('movies.restore');
+Route::delete('/movies/{id}/force-delete', [MoviesController::class, 'forceDelete'])->name('movies.force-delete');
 
 Route::resource('studio', StudioController::class);
 Route::resource('seat', SeatController::class);
