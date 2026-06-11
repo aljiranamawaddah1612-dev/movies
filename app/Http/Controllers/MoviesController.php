@@ -102,6 +102,7 @@ class MoviesController extends Controller
         'release_year' => 'required|integer|digits:4',
         'duration' => 'required|min:1',
         'rating' => 'required|numeric|min:0|max:100',
+        'synopsis' => 'nullable|max:255',
     ], [
         'judul.required' =>'Judul tidak boleh kosong',
         'judul.max' =>'Judul tidak boleh lebih dari :max karakter',
@@ -120,10 +121,17 @@ class MoviesController extends Controller
         'rating.numeric' =>'Rating harus berupa angka',
         'rating.min' =>'Rating minimal 0',
         'rating.max' =>'Rating maksimal 10',
+        'synopsis.max' =>'Sinopsis tidak boleh lebih dari :max karakter',
     ]);
 
-    $movies->update($validated);
-    return to_route('movies.index')->withSuccess('Data berhasil diubah');
+        DB::beginTransaction();
+    try {
+        $movies->update($validated);
+        DB::commit();
+        return to_route('movies.index')->withSuccess('Data berhasil diubah');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', 'Gagal mengubah data: ' . $e->getMessage());
     }
 
     /**

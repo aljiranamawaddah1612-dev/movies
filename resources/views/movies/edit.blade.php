@@ -47,9 +47,16 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <di class="mb-3">
+            <label for="synopsis" class="form-label">Synopsis</label>
+            <textarea class="form-control @error('synopsis') is-invalid @enderror" id="synopsis" name="synopsis">{{ old('synopsis', $movies->synopsis) }}</textarea>
+            @error('synopsis')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            </div>
 
-        <a class="btn btn-warning " href="{{ route('movies.index') }}" role="button">Cancel</a>
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-warning " href="{{ route('movies.index') }}" role="button">Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 </x-app>
